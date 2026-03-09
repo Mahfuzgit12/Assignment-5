@@ -388,3 +388,14 @@ animation:spin 1s linear infinite;
 
 
 
+
+/* responsive */
+
+@media(max-width:900px){
+.issues-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:500px){
+.issues-grid{grid-template-columns:1fr;}
+}
+
