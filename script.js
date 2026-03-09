@@ -1,7 +1,10 @@
 const API="https://phi-lab-server.vercel.app/api/v1/lab/issues"
 
 const container=document.getElementById("issues")
+
 const loader=document.getElementById("loader")
+
+
 const tabs=document.querySelectorAll(".tab")
 
 let allIssues=[]
@@ -9,13 +12,13 @@ let allIssues=[]
 
 async function loadIssues(){
 
-loader.style.display="block"
+     loader.style.display="block"
 
-const res=await fetch(API)
+   const res=await fetch(API)
 
 const data=await res.json()
 
-allIssues=data.data
+  allIssues=data.data
 
 loader.style.display="none"
 
@@ -24,7 +27,7 @@ renderIssues(allIssues)
 }
 
 
-function renderIssues(issues){
+  function renderIssues(issues){
 
 container.innerHTML=""
 
@@ -34,7 +37,7 @@ issues.forEach(issue=>{
 
 const card=document.createElement("div")
 
-card.className=`card ${issue.status==="closed"?"closed":""}`
+   card.className=`card ${issue.status==="closed"?"closed":""}`
 
 card.innerHTML=`
 
@@ -42,11 +45,11 @@ card.innerHTML=`
 
 <p>${issue.description}</p>
 
-<span class="priority ${issue.priority.toLowerCase()}">${issue.priority}</span>
+   <span class="priority ${issue.priority.toLowerCase()}">${issue.priority}</span>
 
 <div class="labels">
 
-${issue.labels?.map(l=>`<span class="label">${l}</span>`).join("")}
+   ${issue.labels?.map(l=>`<span class="label">${l}</span>`).join("")}
 
 </div>
 
@@ -56,7 +59,7 @@ ${issue.labels?.map(l=>`<span class="label">${l}</span>`).join("")}
 
 card.onclick=()=>openModal(issue)
 
-container.appendChild(card)
+   container.appendChild(card)
 
 })
 
@@ -88,9 +91,9 @@ renderIssues(allIssues.filter(i=>i.status===type))
 })
 
 
-/* search */
 
 let timer
+
 
 document.getElementById("search").addEventListener("keyup",async(e)=>{
 
@@ -101,15 +104,18 @@ timer=setTimeout(async()=>{
 const q=e.target.value
 
 if(q===""){
+
 renderIssues(allIssues)
 return
 }
 
 loader.style.display="block"
 
+
 const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${q}`)
 
 const data=await res.json()
+
 
 loader.style.display="none"
 
@@ -126,11 +132,12 @@ document.getElementById("issueModal").style.display="flex"
 
 document.getElementById("modalTitle").innerText=issue.title
 
-document.getElementById("modalDescription").innerText=issue.description
 
-document.getElementById("modalAuthor").innerText=`Opened by ${issue.author}`
+        document.getElementById("modalDescription").innerText=issue.description
 
-document.getElementById("modalDate").innerText=`• ${issue.createdAt}`
+      document.getElementById("modalAuthor").innerText=`Opened by ${issue.author}`
+
+    document.getElementById("modalDate").innerText=`• ${issue.createdAt}`
 
 document.getElementById("modalAssignee").innerText=issue.assignee
 
@@ -138,7 +145,7 @@ document.getElementById("modalPriority").innerText=issue.priority
 
 document.getElementById("modalStatus").innerText=issue.status
 
-/* labels */
+
 
 const labelsContainer=document.getElementById("modalLabels")
 
