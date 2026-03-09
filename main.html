@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Issues</title>
+
+<!-- link with css  -->
+
+<link rel="stylesheet" href="style.css">
+
+  <!-- font awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- font integration -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="navbar-left">
+  <img class="navbar-left-logo" src="./assets/github-logo.png" alt="">
+  <h2>GitHub Issues Tracker</h2>
+</div>
+
+<div class="nav-right">
+
+<input  id="search"  placeholder="Search issues...">
+
+<button class="new-btn">+ New Issue</button>
+
+</div>
+
+</nav>
+
+<div class="container">
+
+<div class="tabs">
+
+<button class="tab active" data="all">All</button>
+<button class="tab" data="open">Open</button>
+<button class="tab" data="closed">Closed</button>
+
+</div>
+
+<div class="issues-info">
+<div >
+  <img src="./assets/Aperture.png" alt="">
+</div>
+<div>
+  <h3 id="issueCount">0 Issues</h3>
+  <p>Track and manage your project issues</p>
+</div>
+
+</div>
+
+<div id="loader" class="loader"></div>
+
+<div id="issues" class="issues-grid"></div>
+
+</div>
+
+
+<div id="modal" class="modal">
+
+<div class="modal-box">
+
+<h2 id="mTitle"></h2>
+
+<p id="mDesc"></p>
+
+<p><b>Author:</b> <span id="mAuthor"></span></p>
+<p><b>Status:</b> <span id="mStatus"></span></p>
+<p><b>Priority:</b> <span id="mPriority"></span></p>
+
+<button onclick="closeModal()">Close</button>
+
+</div>
+
+</div>
+
+<!-- Issue Modal -->
+
+<div id="issueModal" class="modal">
+
+  <div class="modal-container">
+
+    <h2 id="modalTitle"></h2>
+
+    <div class="modal-meta">
+
+      <span id="modalStatus" class="status-badge"></span>
+
+      <span id="modalAuthor"></span>
+
+      <span id="modalDate"></span>
+
+    </div>
+
+    <div id="modalLabels" class="labels"></div>
+
+    <p id="modalDescription" class="modal-desc"></p>
+
+    <div class="modal-bottom">
+
+      <div>
+        <p class="label-title">Assignee:</p>
+        <p id="modalAssignee" class="bold"></p>
+      </div>
+
+      <div>
+        <p class="label-title">Priority:</p>
+        <span id="modalPriority" class="priority-badge"></span>
+      </div>
+
+    </div>
+
+    <button class="close-btn" onclick="closeModal()">Close</button>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
