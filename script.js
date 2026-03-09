@@ -38,14 +38,11 @@ card.className=`card ${issue.status==="closed"?"closed":""}`
 
 card.innerHTML=`
 
-<div class="card-top">
+<h4>${issue.title}</h4>
 
-<span class="priority-badge">${issue.priority}</span>
-</div>
+<p>${issue.description}</p>
 
-<h3 class="card-title">${issue.title}</h3>
-
-<p class="card-desc">${issue.description}</p>
+<span class="priority ${issue.priority.toLowerCase()}">${issue.priority}</span>
 
 <div class="labels">
 
@@ -53,11 +50,7 @@ ${issue.labels?.map(l=>`<span class="label">${l}</span>`).join("")}
 
 </div>
 
-<div class="card-footer">
-<span>#1 by ${issue.author}</span>
-<span>${issue.createdAt}</span>
-</div>
-
+<p>by ${issue.author}</p>
 
 `
 
@@ -95,15 +88,34 @@ renderIssues(allIssues.filter(i=>i.status===type))
 })
 
 
+/* search */
+
+let timer
+
 document.getElementById("search").addEventListener("keyup",async(e)=>{
 
+clearTimeout(timer)
+
+timer=setTimeout(async()=>{
+
 const q=e.target.value
+
+if(q===""){
+renderIssues(allIssues)
+return
+}
+
+loader.style.display="block"
 
 const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${q}`)
 
 const data=await res.json()
 
+loader.style.display="none"
+
 renderIssues(data.data)
+
+},400)
 
 })
 
@@ -126,7 +138,7 @@ document.getElementById("modalPriority").innerText=issue.priority
 
 document.getElementById("modalStatus").innerText=issue.status
 
-
+/* labels */
 
 const labelsContainer=document.getElementById("modalLabels")
 
@@ -145,8 +157,6 @@ function closeModal(){
 document.getElementById("issueModal").style.display="none"
 
 }
-
-
 
 
 loadIssues()
