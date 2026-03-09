@@ -1,0 +1,125 @@
+
+*{
+    font-family: "Geist", sans-serif;
+}
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6fb;
+}
+
+/* login */
+
+.login-body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+background:white;
+padding:40px;
+width:350px;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+button{
+background:#5b3df5;
+border:none;
+color:white;
+padding:10px;
+width:100%;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* navbar */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:white;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+.navbar-left-logo{
+  height: 40px;
+  padding-top: 15px; 
+ 
+}
+.navbar-left{
+  display: flex;
+}
+
+.nav-right{
+display:flex;
+gap:10px;
+
+}
+
+.new-btn{
+background:#5b3df5;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+margin: 10px;
+}
+
+/* tabs */
+
+.tabs{
+margin:20px;
+display:flex;
+gap:10px;
+}
+
+.tab{
+padding:8px 20px;
+border:none;
+background:#eee;
+cursor:pointer;
+border-radius:6px;
+color: black;
+
+}
+
+.tab.active{
+background:#5b3df5;
+color:white;
+}
+
+/* grid */
+
+.container{
+  
+padding:20px 40px;
+}
+
+
+
+.issues-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.issues-info{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px;
+  background-color: #ededf9;
+}
